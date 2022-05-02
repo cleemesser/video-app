@@ -20,6 +20,18 @@ struct VideoReaderState {
     AVFrame* av_frame;
     AVPacket* av_packet;
     SwsContext* sws_scaler_ctx;
+
+  VideoReaderState() {
+    width= height =0;
+    // time_base = 0; leave this structure uninitialized
+    av_format_ctx = NULL;
+    av_codec_ctx = NULL;
+    video_stream_index = -1;
+    av_frame = NULL;
+    av_packet = NULL;
+    sws_scaler_ctx = NULL;
+    
+  }
 };
 
 bool video_reader_open(VideoReaderState* state, const char* filename);
