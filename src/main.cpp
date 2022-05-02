@@ -4,6 +4,19 @@
 #include "video_reader.hpp"
 
 int main(int argc, const char** argv) {
+  const char* file_name;
+  
+  if(argc == 1) {
+    printf("usage: video-app <videofile>\n");
+      exit(0);
+  }
+  if (argc == 2) {
+    file_name = argv[1];
+    printf("trying to open %s\n", file_name);
+  }
+
+
+
     GLFWwindow* window;
 
     if (!glfwInit()) {
@@ -18,7 +31,7 @@ int main(int argc, const char** argv) {
     }
 
     VideoReaderState vr_state;
-    if (!video_reader_open(&vr_state, "/Users/bmj/Desktop/SPACE ECHO.mov")) {
+    if (!video_reader_open(&vr_state, file_name)) {
         printf("Couldn't open video file (make sure you set a video file that exists)\n");
         return 1;
     }
